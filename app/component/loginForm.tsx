@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { User, KeyRound } from "lucide-react"
 import Image from "next/image"
+import { redirect } from "next/navigation"
 
 const formSchema = z.object({
     usernameOrEmail: z.string().min(2).max(50).refine((val) => {
@@ -37,6 +38,9 @@ const LoginForm = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log("Form Data:", values);
+        if (values.usernameOrEmail == "admin" && values.password == "admin123")   {
+            redirect("/")
+        }   
     }
 
     return (

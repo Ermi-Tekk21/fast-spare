@@ -60,16 +60,19 @@ export default {
   			},
         lgspace: '#B5B3B3',
         root: '#F0EAEA',
+
         headerBg: '#D3CFCF',
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
+		border: 'hsl(var(--border))',
+		input: 'hsl(var(--input))',
+		ring: 'hsl(var(--ring))',
+		Sidebar:'#D9D9D9',
+		sideBarBtnColor: '#252424',
+		chart: {
+			'1': 'hsl(var(--chart-1))',
+			'2': 'hsl(var(--chart-2))',
+			'3': 'hsl(var(--chart-3))',
+			'4': 'hsl(var(--chart-4))',
+			'5': 'hsl(var(--chart-5))'
   			}
   		},
   		borderRadius: {

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inria_Sans } from "next/font/google";
 
 import "./globals.css";
+import Navbar from "./component/navbar";
+import Sidebar from "./component/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 const inriaSans = Inria_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "700"], // Choose the required weights
-  variable: "--font-inria-sans", // Custom CSS variable for Tailwind
+  weight: ["300", "400", "700"], 
+  variable: "--font-inria-sans", 
 });
 export const metadata: Metadata = {
   title: "FastProforma",
@@ -32,7 +34,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inriaSans.variable} antialiased`}
       >
-        {children}
+        <div className="fixed flex justify-between w-full">
+          <Sidebar />
+          <Navbar />
+        </div>
+        <div className="absolute pl-[275px] pt-16 text-balance">{children}</div>
       </body>
     </html>
   );
