@@ -1,7 +1,9 @@
 const Page = () => {
     return(
-        <div>
-            <h1>Create Proforma</h1>
+        <div className="flex flex-col items-center">
+            <div className="w-3/4 bg-Sidebar">
+                
+            </div>
         </div>
     )
 }

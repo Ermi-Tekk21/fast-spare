@@ -38,7 +38,7 @@ export default function RootLayout({
           <Sidebar />
           <Navbar />
         </div>
-        <div className="absolute pl-[275px] pt-16 text-balance">{children}</div>
+        <div className="pl-[275px] pt-16 text-balance">{children}</div>
       </body>
     </html>
   );
