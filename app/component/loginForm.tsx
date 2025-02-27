@@ -62,7 +62,7 @@ const LoginForm = () => {
                                     <div className="relative">
                                         <User className="absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500" />
                                         <Input
-                                            className="pl-10 bg-root"
+                                            className="custom-input"
                                             placeholder="Enter your username or email"
                                             {...field}
                                         />
@@ -84,7 +84,7 @@ const LoginForm = () => {
                                         <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500" />
                                         <Input
                                             type="password"
-                                            className="pl-10 bg-root"
+                                            className="custom-input"
                                             placeholder="Enter your password"
                                             {...field}
                                         />
