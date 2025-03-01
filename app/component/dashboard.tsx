@@ -1,8 +1,26 @@
 import { ArrowRight, Plus } from "lucide-react";
 import ProformaPerMonth from "./ProformaPerMonth";
 import Link from "next/link";
+import { getProformas, Proforma } from "@/lib/utils";
 
-const Dashboard = () => {
+const Dashboard = async () => {
+    const proformas = await getProformas();
+
+    const sortedProformas = proformas.sort((a: Proforma, b: Proforma) => {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return dateB - dateA
+    })
+
+    let recentProformas = sortedProformas;
+
+    if (proformas && proformas.length >= 6) {
+        recentProformas = sortedProformas.slice(0, 6);
+    }
+
+
+
+
     return (
         <div className="flex flex-col gap-8 items-center pb-14">
             <div className="w-4/5 bg-Sidebar rounded ">
@@ -33,43 +51,35 @@ const Dashboard = () => {
                     <Link href="/view-proformas" className="text-blue-800 absolute right-0">more</Link>
                 </div>
 
-                <div className="flex justify-around gap-4">
+                <div className="grid grid-cols-3 gap-4">
                     {/* card */}
-                    <div className="relative p-5 pb-10 rounded-md bg-Sidebar w-1/3">
-                        <ul className="flex flex-col  gap-2">
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">PRF-</span> 2025/02/22-001</li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Customer Name:</span> John Doe</li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Plate Number:</span> ABC-1234 </li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Created at:</span> 2025-02-22 </li>
-                        </ul>
-                        <div className="w-full flex justify-end">
-                            <button className="absolute flex gap-2 bg-slate-50 rounded px-3 bottom-1">more <ArrowRight /></button>
-                        </div>
-                    </div>
+                    {
+                        recentProformas.map((proforma: Proforma) => (
+                            <div key={proforma.proformaNumber} className="relative p-3 pb-10 rounded-md bg-Sidebar">
+                                <ul className="flex flex-col gap-2">
+                                    <li className="text-slate-800 bg-white px-5 py-1 rounded-md">
+                                        <span className="font-semibold">PRF-</span> {proforma.proformaNumber}
+                                    </li>
+                                    <li className="text-slate-800 bg-white px-5 py-1 rounded-md">
+                                        <span className="font-semibold">Customer Name:</span> {proforma.customerName}
+                                    </li>
+                                    <li className="text-slate-800 bg-white px-5 py-1 rounded-md">
+                                        <span className="font-semibold">Plate Number:</span> {proforma.plateNumber}
+                                    </li>
+                                    <li className="text-slate-800 bg-white px-5 py-1 rounded-md">
+                                        <span className="font-semibold">Created at:</span> <span className="text-sm">{proforma.createdAt}</span>
+                                    </li>
+                                </ul>
+                                <div className="w-full flex justify-end">
+                                    <Link href={`/view-proformas/${proforma.proformaNumber.split("-").join("").split("/").join("")}`} className="absolute flex gap-2 bg-slate-50 rounded px-3 bottom-1 hover:bg-slate-200 transition-colors duration-300">
+                                        more <ArrowRight />
+                                    </Link>
+                                </div>
+                            </div>
+                        ))
+                    }
 
-                    <div className="relative p-5 pb-10 rounded-md bg-Sidebar w-1/3">
-                        <ul className="flex flex-col  gap-2">
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">PRF-</span> 2025/02/22-001</li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Customer Name:</span> John Doe</li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Plate Number:</span> ABC-1234 </li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Created at:</span> 2025-02-22 </li>
-                        </ul>
-                        <div className="w-full flex justify-end">
-                            <button className="absolute flex gap-2 bg-slate-50 rounded px-3 bottom-1">more <ArrowRight /></button>
-                        </div>
-                    </div>
 
-                    <div className="relative p-5 pb-10 rounded-md bg-Sidebar w-1/3">
-                        <ul className="flex flex-col  gap-2">
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">PRF-</span> 2025/02/22-001</li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Customer Name:</span> John Doe</li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Plate Number:</span> ABC-1234 </li>
-                            <li className="text-slate-800 bg-white px-5 py-1 rounded-md"><span className="font-semibold">Created at:</span> 2025-02-22 </li>
-                        </ul>
-                        <div className="w-full flex justify-end">
-                            <button className="absolute flex gap-2 bg-slate-50 rounded px-3 bottom-1">more <ArrowRight /></button>
-                        </div>
-                    </div>
 
                 </div>
             </div>

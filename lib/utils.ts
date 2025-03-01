@@ -15,19 +15,21 @@ export async function getProformas() {
 }
 
 export interface ProformaItem {
-  description: string;
-  costPrice: number;
-  sellingPrice: number;
+  itemName: string;
+  unit: string;
   quantity: number;
-  totalAmount: number;
+  unitPrice: number;
 }
 
 export interface Proforma {
   proformaNumber: string;
   customerName: string;
   plateNumber: string;
+  vin: string;
+  model: string;
+  referenceNumber: string;
+  deliveryTime: string;
+  preparedBy: string;
+  createdAt: string;
   items: ProformaItem[];
-  totalAmount: number;
-  notes?: string;
-  dateCreated: string;
 }

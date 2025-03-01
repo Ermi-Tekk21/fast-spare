@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inria_Sans } from "next/font/google";
 
 import "./globals.css";
-import Navbar from "./component/navbar";
-import Sidebar from "./component/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 const inriaSans = Inria_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "700"], 
-  variable: "--font-inria-sans", 
+  weight: ["300", "400", "700"],
+  variable: "--font-inria-sans",
 });
 export const metadata: Metadata = {
   title: "FastProforma",
@@ -31,14 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inriaSans.variable} antialiased`}
-      >
-        <div className="fixed flex justify-between w-full">
-          <Sidebar />
-          <Navbar />
-        </div>
-        <div className="pl-[275px] pt-16 text-balance">{children}</div>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inriaSans.variable} antialiased`}>
+        {children}
+        <Toaster />
       </body>
     </html>
   );

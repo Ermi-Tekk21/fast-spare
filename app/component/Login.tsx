@@ -13,17 +13,14 @@ const Login = () => {
                     <p>Effortless Proforma Invoice Management for Car Spare Parts Shops</p>
                 </div>
             </div>
-
             <div className="flex justify-around px-11 items-center lg:w-login-w pt-14 h-login-h bg-lgspace rounded-md shadow-sm">
                 <div className="flex items-center pt-8 flex-col gap-3">
                     <Image src={Hero} alt="logo"></Image>
-                    <p className="font-sans text-sm font-extralight text-slate-600 flex gap-3"><Copyright height={20} width={20}/>All Right Reserved</p>
+                    <p className="font-sans text-sm font-extralight text-slate-600 flex gap-3"><Copyright height={20} width={20} />All Right Reserved</p>
                 </div>
                 <LoginForm />
             </div>
         </main>
-
-
     )
 }
 

@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import Google from "@/public/devicon_google.svg"
+import { toast } from "sonner" // For toast notifications
+
 
 import {
     Form,
@@ -38,9 +40,24 @@ const LoginForm = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log("Form Data:", values);
-        if (values.usernameOrEmail == "admin" && values.password == "admin123")   {
+        if (values.usernameOrEmail == "admin" && values.password == "admin123") {
+            toast.success("Successfully loged in!", {
+                style: {
+                    backgroundColor: "#00cc00", // Green background
+                    color: "#ffffff", // White text
+                    border: "none", // Remove border
+                },
+            }); // Show success message
             redirect("/")
-        }   
+        } else {
+            toast.error("Invalid username or password!", {
+                style: {
+                    backgroundColor: "#ff4444", // Red background
+                    color: "#ffffff", // White text
+                    border: "none", // Remove border
+                },
+            });
+        }
     }
 
     return (
@@ -70,7 +87,7 @@ const LoginForm = () => {
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
-                        )}  
+                        )}
                     />
 
                     {/* Password */}
@@ -107,9 +124,9 @@ const LoginForm = () => {
                     </Button>
                 </form>
             </Form>
-            <Button className="w-full mt-4 bg-root hover:bg-slate-200 text-slate-700 font-sans font-semibold">
+            {/* <Button className="w-full mt-4 bg-root hover:bg-slate-200 text-slate-700 font-sans font-semibold">
             <Image src={Google} alt="Google Logo" width={28} height={28} />
-            Continue with Google</Button>
+            Continue with Google</Button> */}
         </div>
     );
 };
