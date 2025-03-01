@@ -1,6 +1,6 @@
 "use client"; // Mark this component as a Client Component
 
-import { useEffect, useRef, useState, use, Suspense } from "react"; // Import `use`
+import { useEffect, useRef, useState, use } from "react"; // Import `use`
 import { getProformas, Proforma } from "@/lib/utils";
 import Image from "next/image";
 import HeaderImg from "@/public/Header.png";
