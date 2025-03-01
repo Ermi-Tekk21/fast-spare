@@ -94,7 +94,7 @@ const ProformaDetailPage = ({ params }: { params: Promise<{ Proforma_id: string 
             </Button>
 
             {/* Proforma Section (to be converted to PDF) */}
-            <div ref={pdfRef} className="w-4/5 flex flex-col gap-4 items-center bg-white p-8">
+            <div ref={pdfRef} className="w-4/5 flex dark:text-gray-900 rounded-md dark:bg-slate-100 flex-col gap-4 items-center bg-white p-8">
                 {/* Header Image */}
                 <Image src={HeaderImg} alt="header image" width={800} height={200} />
 

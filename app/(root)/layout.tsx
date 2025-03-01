@@ -13,7 +13,7 @@ export default function AuthLayout({
           <Sidebar />
           <Navbar />
         </div>
-        <div className="pl-[275px] pt-16 text-balance">{children}</div>
+        <div className="pl-[275px] pt-8 text-balance">{children}</div>
     </div>
   );
 }

@@ -21,6 +21,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 const formSchema = z.object({
     customerName: z.string().min(2, "Customer name must be at least 2 characters").max(50, "Customer name must not exceed 50 characters"),
     plateNumber: z.string().min(2, "Plate number must be at least 2 characters").max(20, "Plate number must not exceed 20 characters"),
+    proformaNumber: z.string().min(2, "Plate number must be at least 2 characters").max(20, "Plate number must not exceed 20 characters"),
     vin: z.string().min(2, "VIN must be at least 2 characters").max(17, "VIN must not exceed 17 characters"),
     model: z.string().min(2, "Model must be at least 2 characters").max(50, "Model must not exceed 50 characters"),
     referenceNumber: z.string().min(2, "Reference number must be at least 2 characters").max(50, "Reference number must not exceed 50 characters"),
@@ -40,6 +41,7 @@ const CreateProformaForm = () => {
         defaultValues: {
             customerName: "",
             plateNumber: "",
+            proformaNumber: "",
             vin: "",
             model: "",
             referenceNumber: "",
@@ -91,7 +93,7 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="customerName">Customer Name</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Customer name eg:Zemen Insurance" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Customer name eg:Zemen Insurance" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -104,7 +106,20 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="plateNumber">Plate Number</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Plate number eg:03-823528AA" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Plate number eg:03-823528AA" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="proformaNumber"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel htmlFor="plateNumber">Proforma Number</FormLabel>
+                                <FormControl>
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Eg: PRF-2025/02/79-005" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -117,7 +132,7 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="vin">VIN</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="VIN eg:LGXEXL4CRO227320" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="VIN eg:LGXEXL4CRO227320" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -130,7 +145,7 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="model">Model</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Model eg:BYD Seagull" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Model eg:BYD Seagull" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -143,7 +158,7 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="referenceNumber">Reference Number</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Reference number eg:V0012" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Reference number eg:V0012" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -156,7 +171,7 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="deliveryTime">Delivery Time (in days)</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Delivery time eg:3" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Delivery time eg:3" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -169,7 +184,7 @@ const CreateProformaForm = () => {
                             <FormItem>
                                 <FormLabel htmlFor="preparedBy">Prepared By</FormLabel>
                                 <FormControl>
-                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Prepared by eg:Ermias" {...field} />
+                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Prepared by eg:Ermias" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -178,9 +193,9 @@ const CreateProformaForm = () => {
                 </div>
 
                 {/* Items Section */}
-                <div className="text-slate-700 text-center">
+                <div className="text-slate-700 dark:text-slate-100 text-center">
                     <p>Items</p>
-                    <hr className="border-t-4" />
+                    <hr className="border-t-4 dark:border-slate-900" />
                 </div>
 
                 <ScrollArea className="h-[400px] p-4">
@@ -200,7 +215,7 @@ const CreateProformaForm = () => {
                                             <FormItem>
                                                 <FormLabel htmlFor={`items.${index}.itemName`}>Item Name</FormLabel>
                                                 <FormControl>
-                                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Item name eg:Thunder DDP Glass Down" {...field} />
+                                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Item name eg:Thunder DDP Glass Down" {...field} />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -214,7 +229,7 @@ const CreateProformaForm = () => {
                                             <FormItem>
                                                 <FormLabel htmlFor={`items.${index}.unit`}>Unit</FormLabel>
                                                 <FormControl>
-                                                    <Input className="custom-input focus:border-white-50 focus:ring-none" placeholder="Unit eg:pcs" {...field} />
+                                                    <Input className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none" placeholder="Unit eg:pcs" {...field} />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -230,7 +245,7 @@ const CreateProformaForm = () => {
                                                 <FormControl>
                                                     <Input
                                                         type="number"
-                                                        className="custom-input focus:border-white-50 focus:ring-none"
+                                                        className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none"
                                                         placeholder="Quantity"
                                                         {...field}
                                                         onChange={(e) => {
@@ -253,7 +268,7 @@ const CreateProformaForm = () => {
                                                 <FormControl>
                                                     <Input
                                                         type="number"
-                                                        className="custom-input focus:border-white-50 focus:ring-none"
+                                                        className="custom-input dark:bg-gray-900 focus:border-white-50 focus:ring-none"
                                                         placeholder="Unit price"
                                                         {...field}
                                                         onChange={(e) => {
@@ -267,9 +282,9 @@ const CreateProformaForm = () => {
                                         )}
                                     />
 
-                                    <div className="flex gap-3 justify-end">
+                                    <div className="flex gap-3 items-center justify-end">
                                         <div className="flex items-center justify-between">
-                                            <p className="custom-input w-60 text-slate-600">Total price: {totalAmount.toFixed(2)}</p>
+                                            <p className="custom-input text-sm w-60 dark:bg-gray-900 dark:text-slate-100 text-slate-600">Total price: {totalAmount.toFixed(2)}</p>
                                         </div>
                                         {/* Remove button for each item */}
                                         <Button className="w-min" variant="outline" onClick={() => remove(index)}>Remove Item <Delete /></Button>
@@ -280,12 +295,12 @@ const CreateProformaForm = () => {
                     </div>
                 </ScrollArea>
 
-                <hr className="border-t-4" />
+                <hr className="border-t-4 dark:border-slate-900" />
 
                 {/* Total Price and Buttons */}
-                <div className="flex gap-2 justify-end">
+                <div className="flex gap-2 items-center justify-end">
                     <div className="flex items-center justify-between">
-                        <p className="custom-input w-60 text-slate-600">Total Price of all items: {totalPrice.toFixed(2)}</p>
+                        <p className="custom-input w-80 text-slate-60 dark:bg-gray-900 dark:text-slate-100 text-sm">Total Price of all items: {totalPrice.toFixed(2)}</p>
                     </div>
                     <Button type="button" variant="outline" className="w-min" onClick={() => append({ itemName: "", unit: "pcs", quantity: 1, unitPrice: 0 })}>
                         Add Item <PlusCircle className="text-black" />
