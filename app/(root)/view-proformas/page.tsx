@@ -9,18 +9,18 @@ export default async function Page({
 }: {
     searchParams: Promise<{ query?: string }>;
 }) {
-    const proformas = await getProformas();
-    const query = (await searchParams).query;
+    const proformas : Proforma = await getProformas();
+    const query:string | undefined = (await searchParams).query;
 
     // Sort proformas by dateCreated (newest first)
-    const sortedProformas = proformas.sort((a: Proforma, b: Proforma) => {
+    const sortedProformas: Proforma = proformas.sort((a: Proforma, b: Proforma) => {
         const dateA = new Date(a.createdAt).getTime();
         const dateB = new Date(b.createdAt).getTime();
         return dateB - dateA; // Descending order
     });
 
     // Filter proformas based on query
-    let filteredProformas = sortedProformas;
+    let filteredProformas: Proforma = sortedProformas;
     if (query) {
         filteredProformas = proformas.filter((proforma: Proforma) => {
             return (
@@ -29,7 +29,6 @@ export default async function Page({
             )
         })
     }
-
     return (
         <div className="flex justify-center">
             <div className="w-3/4 mt-4 flex flex-col gap-8">
@@ -38,7 +37,7 @@ export default async function Page({
                 {query && <h3 className="font-semibold text-slate-800 text-2xl text-start dark:text-slate-200">Searched Proformas: {query}</h3>}
                 {!query && <h3 className="font-semibold text-slate-800 text-2xl text-start dark:text-slate-300">All Proformas</h3>}
                 {filteredProformas.length === 0 ? (
-                    <p className="text-slate-800`">No proformas found for "{query}".</p>
+                    <p className="text-slate-800`">No proformas found for `{query}`.</p>
                 ) : (
                     <ScrollArea className="h-[500px] p-2"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {filteredProformas.map((proforma: Proforma) => (

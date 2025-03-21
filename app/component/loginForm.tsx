@@ -72,6 +72,7 @@ const LoginForm = () => {
           router.push("/");
         }
       } catch (error) {
+        console.error(error);
         // Show error message
         toast.error("Invalid username or password!", {
           style: {
