@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Edit, User } from "lucide-react";
+import { User } from "lucide-react";
 
 const Page = () => {
     return (

@@ -13,7 +13,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { ArrowDownLeftFromSquare, Delete, PlusCircle, Save } from "lucide-react"
+import { Delete, PlusCircle, Save } from "lucide-react"
 import { toast } from "sonner" // For toast notifications
 import { ScrollArea } from "@/components/ui/scroll-area"
 

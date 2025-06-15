@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getProformas, Proforma } from "@/lib/utils";
 

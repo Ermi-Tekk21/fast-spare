@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button";
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import Form from 'next/form';
 import SearchFormReset from "./searchFormReset";
 

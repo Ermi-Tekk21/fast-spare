@@ -1,8 +1,7 @@
 // app/components/Navbar.tsx
 "use client";
 
-import { CloudMoon, LogOut } from "lucide-react";
-import Link from "next/link";
+import { LogOut } from "lucide-react";
 import { logoutUser } from "../auth/actions/logout";
 import { ModeToggle } from "@/components/ModeToggle";
 

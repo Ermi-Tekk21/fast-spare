@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Logo from "@/public/Logo.png";
-import { CircleDot, Dot, Edit, EllipsisVertical, LayoutDashboard, Settings, Space, Tally1, View } from "lucide-react";
+import { Edit, LayoutDashboard, Settings, View } from "lucide-react";
 import Link from "next/link";
 
 const Links = {

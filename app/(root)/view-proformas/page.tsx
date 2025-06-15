@@ -9,18 +9,18 @@ export default async function Page({
 }: {
     searchParams: Promise<{ query?: string }>;
 }) {
-    const proformas : Proforma = await getProformas();
-    const query:string | undefined = (await searchParams).query;
+    const proformas: Proforma[] = await getProformas();
+    const query: string | undefined = (await searchParams).query;
 
     // Sort proformas by dateCreated (newest first)
-    const sortedProformas: Proforma = proformas.sort((a: Proforma, b: Proforma) => {
+    const sortedProformas: Proforma[] = proformas.sort((a: Proforma, b: Proforma) => {
         const dateA = new Date(a.createdAt).getTime();
         const dateB = new Date(b.createdAt).getTime();
         return dateB - dateA; // Descending order
     });
 
     // Filter proformas based on query
-    let filteredProformas: Proforma = sortedProformas;
+    let filteredProformas: Proforma[] = sortedProformas;
     if (query) {
         filteredProformas = proformas.filter((proforma: Proforma) => {
             return (
